@@ -1,0 +1,35 @@
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{pathFor 'Songs.list'}}">Emotion</a>
+      </div>
+
+
+      <ul class="nav navbar-nav navbar-right"> 
+        {{#if loggedIn}}
+          <li><a href="{{pathFor 'Songs.list'}}">Songs</a></li>  
+        {{/if}}   
+        {{#if isAdmin}}
+          <li><a href="{{pathFor 'Admin.Users.List'}}">Users</a></li> 
+          <li><a href="{{pathFor 'Admin.Questions.List'}}">Questions</a></li> 
+        {{/if}}  
+        
+        <li><a>{{> loginButtons align="right"}}</a></li>        
+      </ul>
+    </div><!-- /.container-fluid -->
+  </nav>
+    
+  <div class="layout container-fluid">        
+      
+    
+  </div>
+</body>
+

@@ -1,0 +1,38 @@
+<template name="admin_home">
+	<div class="row">
+		<div class="col-md-offset-1 col-md-10 col-xs-offset-1 col-xs-10">
+			<a href="{{pathFor 'Admin.Songs.add'}}"><button class="btn btn-default pull-right">Add Song</button></a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-1 col-xs-offset-1 col-md-10 col-xs-10">
+			<table class="table">
+				<tr>
+					<th>#</th>
+					<th>Title</th>
+					<th>Artist</th>
+					<th># votes</th>
+					<th>Added by</th>
+					<th>Action</th>
+				</tr>
+				{{#each songs}}
+				<tr>
+					<td>{{index}}</td>
+					<td><a href="{{pathFor 'Admin.Songs.show' id=_id}}">{{name}}</a></td>
+					<td>{{artist}}</td>
+					<td><a href="{{pathFor 'Admin.Songs.Responses' id=_id}}">{{voteCount}}</a></td>
+					<td>
+						{{#with user created_by}}
+							{{username}}
+						{{/with}}
+					</td>
+					
+					<td><button class="btn btn-default delete-song">Delete</button></td>
+				</tr>
+				{{/each}}
+			</table>
+		</div>
+	</div>
+
+
+</template>

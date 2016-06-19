@@ -1,0 +1,39 @@
+<template name="users_list">
+	<div class="row">
+		<div class="col-md-offset-1 col-md-10 col-xs-offset-1 col-xs-10">
+			<a href="{{pathFor 'Admin.Users.Add'}}"><button class="btn btn-default pull-right">Add User</button></a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-1 col-xs-offset-1 col-md-10 col-xs-10">
+			<table class="table">
+				<tr>
+					<th>#</th>
+					<th>Username</th>
+					<th>Email-Id</th>
+					<th># Songs voted</th>
+					<th>Role</th>
+					<th>Action</th>
+				</tr>
+				{{#each users}}
+				<tr>
+					<td>{{index}}</td>
+					<td>{{username}}</td>
+					<td>
+						{{#each emails}}
+							{{address}}
+						{{/each}}
+					</td>
+					<td><a href="{{pathFor 'Admin.Users.Responses' id=_id}}">{{voteCount}}</a></td>
+					<td>
+						{{#each roles}}
+							{{this}}
+						{{/each}}
+					</td>
+					<td><button class="btn btn-default remove-user">Remove</button></td>
+				</tr>
+				{{/each}}
+			</table>
+		</div>
+	</div>
+</template>

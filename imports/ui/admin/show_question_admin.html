@@ -1,0 +1,51 @@
+<template name="show_question_admin">
+
+{{#if dataReady}}
+	<div class="row">
+		<div class="col-md-12 col-xs-12">
+			{{#if state.edit}}
+				<button class="btn btn-default pull-right save-question">Save Question</button>	
+			{{else}}
+				<button class="btn btn-default pull-right edit-question">Edit Question</button>
+			{{/if}}
+		</div>
+	</div>
+<div class="row">
+	<div class="col-md-offset-1 col-xs-offset-1">
+		{{#if state.edit}}
+			<strong>title</strong> : <input class="input-title" value="{{question.title}}"/>
+		{{else}}
+			<strong>title</strong> : {{question.title}}
+		{{/if}}
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-offset-1 col-sm-offset-1"> 
+		<strong><h3>Options</h3></strong>
+	</div>
+</div>
+{{#each question.options}}
+<div class="row">
+	<div class="col-md-offset-1 col-xs-offset-1">
+	<strong>{{index}}. </strong>
+	<strong>emotion : </strong> {{emotion}}
+	<strong>max intensity : </strong> {{max_intensity}}
+	{{#if state.edit}}
+		<button class="btn btn-default remove-option">Remove</button>
+	{{/if}}
+	</div>
+</div>
+{{/each}}
+{{#if state.edit}}
+	<div class="row">
+		<div class="col-md-offset-1 col-xs-offset-1">
+			<strong>emotion : </strong> <input class="input-emotion"/>
+			<strong>max intensity : </strong><input class="input-max-intensity"/>
+			<button class="btn btn-default add-option">Add Option</button>
+		</div>
+	</div>
+{{/if}}
+
+{{/if}}
+
+</template>

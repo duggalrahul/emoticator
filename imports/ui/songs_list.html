@@ -1,0 +1,7 @@
+<template name="songs_list">
+	{{#if isAdmin}}
+		{{>admin_home}}
+	{{else}}
+		{{>student_home}}
+	{{/if}}
+</template>

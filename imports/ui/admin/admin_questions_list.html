@@ -1,0 +1,27 @@
+<template name="admin_questions_list">
+ 	<div class="row">
+		<div class="col-md-offset-1 col-md-10 col-xs-offset-1 col-xs-10">
+			<a href="{{pathFor 'Admin.Questions.Add'}}"><button class="btn btn-default pull-right">Add Question</button></a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-1 col-xs-offset-1 col-md-10 col-xs-10">
+			<table class="table">
+				<tr>
+					<th>#</th>
+					<th>Title</th>
+					<th>Added by</th>
+					<th>Action</th>
+				</tr>
+				{{#each questions}}
+				<tr>
+					<td>{{index}}</td>
+					<td><a href="{{pathFor 'Admin.Questions.Show' id=_id}}">{{title}}</a></td>
+					<td>Rahul</td>
+					<td><button class="btn btn-default remove-question">Delete</button></td>
+				</tr>
+				{{/each}}
+			</table>
+		</div>
+	</div>
+</template>

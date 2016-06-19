@@ -1,0 +1,34 @@
+<template name="student_home">
+	<style>
+		.td{
+			text-align: center;
+		}
+	</style>
+	<div class="row">
+		<div class="col-md-offset-1 col-xs-offset-1 col-md-10 col-xs-10">
+			<table class="table">
+				<tr>
+					<th>#</th>
+					<th>Title</th>
+					<th>Artist</th>
+					<th>Summary</th>
+					<th>Voted on</th>
+				</tr>
+				{{#each songs}}
+				<tr>
+					<td>{{index}}</td>
+					<td><a href="{{pathFor 'Songs.show' id=_id}}">{{name}}</a></td>
+					<td>{{artist}}</td>
+					<td>
+						{{#each summary mySongResponse._id}}
+							{{this}},
+						{{/each}}
+					</td>					
+					<td>{{prettyTime mySongResponse}}</td>
+				</tr>
+				{{/each}}
+				
+			</table>
+		</div>
+	</div>
+</template>

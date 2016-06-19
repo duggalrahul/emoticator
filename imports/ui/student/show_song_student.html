@@ -1,0 +1,41 @@
+<template name="show_song_student">
+	{{#if dataReady}}
+		<div class="row">
+			<div class="col-md-12 col-xs-12">
+					<h3 class="text-center" style="margin-top: 0px;">{{song.name}} by {{song.artist}}</h3>
+			</div>
+			
+		</div>
+		<div class="row" style="border-bottom: 2px solid black">	
+			<div class="col-md-12 col-sm-12">
+			</div>	
+			<div class="lyrics col-md-6 col-sm-6" style="height:300px; overflow:auto;">	
+				<p class="text-center">
+					{{{song.lyrics}}}		
+				</p>				
+			</div>
+			
+			<div class="web-link col-md-6 col-sm-6 text-center">
+					{{{song.web_link}}}
+			</div>
+			
+		</div>
+		<div class="row">
+			<div class="question col-md-offset-1 col-sm-offset-1 col-md-5 col-sm-5">
+				<strong>What do you think of the song?</strong>				
+				<ol type="A">	
+				   {{#each options}}			   
+				   		<li><strong>{{emotion}}</strong>:{{>rating}}</li>
+				   {{/each}}
+				</ol>
+			</div>
+			<div class="col-md-4 col-sm-4">				
+				<button class="btn btn-default pull-right delete-response">Clear Response</button>
+				<button class="btn btn-default pull-right save-response">Save Response</button>
+				<button class="btn btn-default pull-right next-song">Next Song</button>
+			</div>
+		</div>
+	{{/if}}
+	
+</template>
+

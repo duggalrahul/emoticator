@@ -1,0 +1,39 @@
+<template name="song_responses">
+	{{#if songReady}}
+	<div class="row">
+			<div class="col-md-12 col-xs-12">
+					<h3 class="text-center" style="margin-top: 0px;">Responses for {{song.name}} by {{song.artist}}</h3>
+			</div>			
+		</div>
+	{{/if}}
+	<div class="row">
+		<div class="col-md-offset-1 col-xs-offset-1 col-md-10 col-xs-10">
+			<table class="table">
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>Voted On</th>
+					<th>Summary</th>
+					<th>Action</th>
+				</tr>
+				{{#each responses song._id}}
+				<tr>
+					<td>{{index}}</td>					
+					<td>
+						{{#with user user_id}}
+							{{username}}
+						{{/with}}
+				    </td>					
+					<td>{{created_at}}</td>
+					<td>
+						{{#each summary}}
+							{{this}},
+						{{/each}}
+					</td>
+					<td><button class="btn btn-default delete-response">Delete</button></td>
+				</tr>
+				{{/each}}
+			</table>
+		</div>
+	</div>
+</template>

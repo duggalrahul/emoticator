@@ -1,0 +1,8 @@
+<template name="show_song">
+{{#if isAdmin}}
+	{{>show_song_admin}}
+{{else}}
+	{{>show_song_student}}
+{{/if}}
+
+</template>

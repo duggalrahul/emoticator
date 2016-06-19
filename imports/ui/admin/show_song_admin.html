@@ -1,0 +1,75 @@
+
+<template name="show_song_admin">
+	{{#if dataReady}}
+		<div class="row">
+			<div class="col-md-12 col-xs-12">
+				{{#if state.edit}}
+					Name : <input class="input-name" value="{{song.name}}"/>
+					Artist : <input class="input-artist" value="{{song.artist}}"/>
+				{{else}}
+					<h3 class="text-center" style="margin-top: 0px;">{{song.name}} by {{song.artist}}</h3>
+				{{/if}}
+				{{#if state.edit}}
+					<button class="btn btn-default pull-right save">Save Song</button>			
+				{{else}}
+					<button class="btn btn-default pull-right edit">Edit Song</button>
+				{{/if}}
+			</div>
+			
+		</div>
+		<div class="row" style="border-bottom: 2px solid black">	
+			<div class="col-md-12 col-sm-12">
+			</div>	
+			<div class="lyrics col-md-6 col-sm-6" style="height:300px; overflow:auto;">	
+				{{#if state.edit}}
+					Lyrics :					
+					<textarea class="col-md-6 col-sm-6 input-lyrics" style="height:300px; overflow:auto;">
+						{{song.lyrics}}
+					</textarea>
+				{{else}}				 
+					<p class="text-center">
+						{{{song.lyrics}}}		
+					</p>
+				
+				{{/if}}
+			</div>
+			
+			<div class="web-link col-md-6 col-sm-6 text-center">
+				{{#if state.edit}}
+					Video url : <input type="text" class="input-web-link" value="{{song.web_link}}"/>
+				{{else}}			
+					{{{song.web_link}}}
+				{{/if}}
+			</div>
+			
+		</div>
+		{{#if state.edit}}
+		<div class="row">
+			<div class="question col-md-offset-1 col-xs-offset-1">
+				<strong>Choose Question : </strong>
+				<select class="input-questions-dropdown">
+					<option value="">Not Selected</option>
+					{{#each questions}}
+						<option value="{{_id}}" {{active}}>{{title}}</option>
+					{{/each}}
+				</select>
+			</div>	
+		</div>
+		{{/if}}
+		{{#if song.qs_id}}
+		<div class="row">
+			<div class="question col-md-offset-1 col-xs-offset-1">
+				<strong>What do you think of the song?</strong>
+				
+				<ol type="A">	
+				   {{#each options}}			   
+				   		<li><strong>{{emotion}}</strong>:{{>rating}}</li>
+				   {{/each}}
+				</ol>
+			</div>	
+		</div>
+		{{/if}}
+	{{/if}}
+	
+</template>
+
