@@ -6,8 +6,6 @@ import { songs } from '../../api/songs/songs.js';
 import { questions } from '../../api/questions/questions.js'; 
 import { responses } from '../../api/responses/responses.js'; 
 
-export const reloadRatingRv = new ReactiveVar();
-
 
 Template.show_song_student.helpers({
 	'dataReady' : function(){
@@ -31,7 +29,6 @@ Template.show_song_student.helpers({
 
 		console.log('response',response);
 		return _.map(question.options,function(o,i){
-			o["response_id"] = response ? response._id : undefined;
 			o["index"] = i+1;			
 			o["value"] = response ? response[o["emotion"]] : 0;
 						
