@@ -20,6 +20,23 @@ Meteor.methods({
 		}
 		
 	},
+	'addAdmin' : function(username,email,password){
+		// if(Roles.userIsInRole(this.userId,'admin')){
+			user = {
+				username : username,
+				email : email,
+				password : password,
+				profile : {}
+			}
+			userId = Accounts.createUser(user);
+			Roles.addUsersToRoles(userId,'admin');
+
+		// }
+		// else{
+		// 	console.log('you donot have admin permissions');
+		// }
+		
+	},
 	'deleteUser' : function(id){
 		if(Roles.userIsInRole(this.userId,'admin')){
 			responses.remove({user_id:id});
